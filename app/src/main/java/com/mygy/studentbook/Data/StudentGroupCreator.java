@@ -9,13 +9,13 @@ import java.util.Date;
 import java.util.HashMap;
 
 public abstract class StudentGroupCreator {
-    private static DatabaseActionListener ignoringListener;
-
-    static{
-        ignoringListener = successful -> {
-
-        };
-    }
+//    private static DatabaseActionListener ignoringListener;
+//
+//    static{
+//        ignoringListener = successful -> {
+//
+//        };
+//    }
 
 
     public static StudentGroup createStudentGroup(String name, Date start, Date end){
@@ -27,7 +27,7 @@ public abstract class StudentGroupCreator {
 
         StudentGroup group = new StudentGroup(name,start,end);
         DataBaseHelper.addGroupToBase(group, success -> {
-            DataBaseHelper.updateGroupDataInBase(group,ignoringListener);
+            DataBaseHelper.updateGroupDataInBase(group,Constants.IgnoringDatabaseActionListener);
         });
         return group;
     }

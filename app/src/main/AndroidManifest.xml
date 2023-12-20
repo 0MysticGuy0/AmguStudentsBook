@@ -13,6 +13,9 @@
         android:theme="@style/Theme.StudentBook"
         tools:targetApi="31">
         <activity
+            android:name=".SettingsTab.StudentSettingsTab"
+            android:exported="false" />
+        <activity
             android:name=".MainTabActivity"
             android:exported="false" />
         <activity

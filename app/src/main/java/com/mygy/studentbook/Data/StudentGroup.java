@@ -13,6 +13,7 @@ public class StudentGroup {
     private Date startDate,endDate;
     private HashMap<String, Object> groupDoc;
     private ArrayList<Student> students;
+    private Student headman;
     private static final ArrayList<StudentGroup> allStudentGroups;
     private static Comparator<Student> nameComparator;
 
@@ -27,6 +28,7 @@ public class StudentGroup {
         this.endDate = endDate;
         groupDoc = new HashMap<>();
         students = new ArrayList<>();
+        headman = null;
 
         updateAllDataInDoc();
 
@@ -64,10 +66,19 @@ public class StudentGroup {
     public ArrayList<Student> getStudents() {
         return students;
     }
+    public Student getHeadman() {
+        return headman;
+    }
 
     public void addStudent(Student student){
         students.add(student);
+        if(student.userType == User.UserType.HEADMAN){
+            headman = student;
+        }
         students.sort(nameComparator);
+    }
+    public void setHeadman(Student headman) {
+        this.headman = headman;
     }
 
     public static ArrayList<StudentGroup> getAllStudentGroups(){

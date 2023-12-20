@@ -6,6 +6,8 @@ public abstract class Constants {
 
     public static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
+    public static DatabaseActionListener IgnoringDatabaseActionListener = successful -> {};
+
     public static final String USERS_BASE = "users";
     public static final String GROUPS_BASE = "groups";
 

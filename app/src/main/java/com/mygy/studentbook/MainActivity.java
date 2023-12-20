@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.mygy.studentbook.Data.User;
 import com.mygy.studentbook.Data.UserCreator;
 import com.mygy.studentbook.Data.Utilites.DataBaseHelper;
+import com.mygy.studentbook.Data.Utilites.PasswordGenerator;
+import com.mygy.studentbook.Data.Utilites.UserPasswordGenerator;
 
 public class MainActivity extends AppCompatActivity {
     //5pF7WuixBQQaXp1JW7vl
@@ -22,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*
+        PasswordGenerator passwordGenerator = new UserPasswordGenerator();
+        for(int i = 0; i< 10; i++){
+            System.out.println(passwordGenerator.generate(6));
+        }*/
 
         Button loginBtn = findViewById(R.id.main_loginBtn);
         loginBtn.setVisibility(View.GONE);
