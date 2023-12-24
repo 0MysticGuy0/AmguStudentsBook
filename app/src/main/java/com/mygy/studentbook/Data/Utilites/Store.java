@@ -21,4 +21,7 @@ public abstract class Store {
             return true;
         }
     }
+    public static void removeUsedPassword(String passwd){
+        usedPasswords.remove(passwd);
+    }
 }

@@ -12,7 +12,7 @@ public class User {
     protected UserType userType;
     protected HashMap<String,Object> userDoc;
     private static ArrayList<User> allUsers = new ArrayList<>();
-    protected ArrayList<Student> allStudents = new ArrayList<>();
+    protected static ArrayList<Student> allStudents = new ArrayList<>();
 
     public User(String password, UserType userType) {
         this.password = password;
@@ -51,6 +51,10 @@ public class User {
 
     public static ArrayList<User> getAllUsers() {
         return allUsers;
+    }
+
+    public static ArrayList<Student> getAllStudents() {
+        return allStudents;
     }
 
     public enum UserType implements Serializable {

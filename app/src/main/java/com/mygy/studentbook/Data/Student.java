@@ -3,6 +3,7 @@ package com.mygy.studentbook.Data;
 import com.mygy.studentbook.Data.Utilites.Constants;
 import com.mygy.studentbook.Data.Utilites.DataBaseHelper;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -10,6 +11,7 @@ public class Student extends User{
     private String fio;
     private Date birthdate;
     private StudentGroup studentGroup;
+    private ArrayList<Note> notes;
 
     public Student(String password, String fio, Date birthdate, StudentGroup studentGroup) {
         super(password, UserType.STUDENT);
@@ -18,6 +20,7 @@ public class Student extends User{
         this.studentGroup = studentGroup;
         updateAllDataInDoc();
         studentGroup.addStudent(this);
+        notes = new ArrayList<>();
 
         allStudents.add(this);
     }
@@ -29,15 +32,23 @@ public class Student extends User{
         this.studentGroup = studentGroup;
         updateAllDataInDoc();
         studentGroup.addStudent(this);
+        notes = new ArrayList<>();
 
         allStudents.add(this);
     }
 
+    public void addNote(Note note){
+        if(!notes.contains(note))
+            notes.add(note);
+    }
     public StudentGroup getStudentGroup() {
         return studentGroup;
     }
     public String getFio() {
         return fio;
+    }
+    public ArrayList<Note> getNotes() {
+        return notes;
     }
     public Date getBirthdate() {
         return birthdate;
@@ -65,6 +76,7 @@ public class Student extends User{
         return (int)(TimeUnit.DAYS.convert( Math.abs(new Date().getTime() - birthdate.getTime()), TimeUnit.MILLISECONDS)/365);
     }
 
+
     @Override
     public void updateAllDataInDoc() {
         super.updateAllDataInDoc();
@@ -74,5 +86,16 @@ public class Student extends User{
             userDoc.put(Constants.USER_GROUP_ID,studentGroup.getId());
         else
             userDoc.put(Constants.USER_GROUP_ID,null);
+    }
+
+    public static ArrayList<Student> getAllStudents(){
+        return User.getAllStudents();
+    }
+    public static Student getStudentById(String id){
+        for(Student student:getAllStudents()){
+            if(student.getId().equals(id))
+                return student;
+        }
+        return null;
     }
 }

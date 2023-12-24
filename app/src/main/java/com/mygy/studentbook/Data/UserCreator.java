@@ -44,6 +44,18 @@ public abstract class UserCreator {
         });
         return student;
     }
+    public static void deleteStudent(Student student){
+        Store.removeUsedPassword(student.getPassword());
+        User.getAllUsers().remove(student);
+        Student.getAllStudents().remove(student);
+        student.getStudentGroup().removeStudentFromGroup(student);
+        DataBaseHelper.removeUserFromBase(student,Constants.IgnoringDatabaseActionListener);
+
+        for(Note note:student.getNotes()){
+            NoteCreator.deleteNote(note);
+        }
+        student.getNotes().clear();
+    }
 
     public static User retrieveUserFromDoc(HashMap<String, Object> doc) {
         User user;

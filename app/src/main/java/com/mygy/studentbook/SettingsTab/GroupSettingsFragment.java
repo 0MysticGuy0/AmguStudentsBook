@@ -53,7 +53,8 @@ public class GroupSettingsFragment extends Fragment {
 
                 Button subjectsBtn = view.findViewById(R.id.groupSettings_subjectsBtn);
                 subjectsBtn.setOnClickListener(v -> {
-
+                    SubjectsSettingsFragment.group = group;
+                    MainTabActivity.replaceFragment(this.getActivity(),new SubjectsSettingsFragment());
                 });
             }
         }

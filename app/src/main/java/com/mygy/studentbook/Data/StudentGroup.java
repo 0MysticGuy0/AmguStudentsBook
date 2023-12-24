@@ -1,5 +1,6 @@
 package com.mygy.studentbook.Data;
 
+import com.google.common.collect.Comparators;
 import com.mygy.studentbook.Data.Utilites.Constants;
 
 import java.util.ArrayList;
@@ -13,13 +14,24 @@ public class StudentGroup {
     private Date startDate,endDate;
     private HashMap<String, Object> groupDoc;
     private ArrayList<Student> students;
+    private ArrayList<Subject> subjects;
     private Student headman;
     private static final ArrayList<StudentGroup> allStudentGroups;
-    private static Comparator<Student> nameComparator;
+    private static Comparator<Student> studentsComparator;
+    private static Comparator<Subject> subjectsComparator;
 
-    static{
+    static {
         allStudentGroups = new ArrayList<>();
-        nameComparator = Comparator.comparing(Student::getFio);
+        studentsComparator = Comparator.comparing(Student::getFio);
+        subjectsComparator = (s1, s2) -> {
+            if (s1.getEndDate().before(s2.getEndDate())) {
+                return 1;
+            } else if (s1.getEndDate().equals(s2.getStartDate())){
+                return s2.getName().compareTo(s1.getName());
+            }else{
+                return -1;
+            }
+        };
     }
 
     public StudentGroup(String name, Date startDate, Date endDate) {
@@ -28,6 +40,7 @@ public class StudentGroup {
         this.endDate = endDate;
         groupDoc = new HashMap<>();
         students = new ArrayList<>();
+        subjects = new ArrayList<>();
         headman = null;
 
         updateAllDataInDoc();
@@ -66,6 +79,10 @@ public class StudentGroup {
     public ArrayList<Student> getStudents() {
         return students;
     }
+    public ArrayList<Subject> getSubjects() {
+        return subjects;
+    }
+
     public Student getHeadman() {
         return headman;
     }
@@ -75,11 +92,21 @@ public class StudentGroup {
         if(student.userType == User.UserType.HEADMAN){
             headman = student;
         }
-        students.sort(nameComparator);
+        students.sort(studentsComparator);
+    }
+    public void removeStudentFromGroup(Student student){
+        students.remove(student);
+        if(headman == student) headman=null;
     }
     public void setHeadman(Student headman) {
         this.headman = headman;
     }
+
+    public void addSubject(Subject subject){
+        subjects.add(subject);
+        subjects.sort(subjectsComparator);
+    }
+
 
     public static ArrayList<StudentGroup> getAllStudentGroups(){
         return allStudentGroups;

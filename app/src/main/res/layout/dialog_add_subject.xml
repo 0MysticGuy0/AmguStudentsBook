@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/amguBlue"
+        android:padding="8dp"
+        android:text="Создать предмет"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/addSubject_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="название"
+        android:padding="8dp"
+        android:inputType="text|textEmailAddress"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="группа: "
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/addSubject_groupName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="группa"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EDEAEA"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Начало: "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/addSubject_startDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="00/00/0000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/addSubject_startDateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_calendar_month_24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EDEAEA"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Конец: "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/addSubject_endDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="00/00/0000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/addSubject_endDateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_calendar_month_24" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Кол-во пар в день:"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Пн"
+                android:background="@color/amguBlue_background"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="4dp"/>
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Вт"
+                android:background="@color/amguBlue_background"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="4dp"/>
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Ср"
+                android:background="@color/amguBlue_background"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="4dp"/>
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Чт"
+                android:background="@color/amguBlue_background"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="4dp"/>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Пт"
+                android:background="@color/amguBlue_background"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="4dp"/>
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Сб"
+                android:background="@color/amguBlue_background"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginHorizontal="4dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <NumberPicker
+                android:id="@+id/addSubject_dayCount_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="4dp"
+                android:background="@color/amguBlue_background"
+                />
+
+            <NumberPicker
+                android:id="@+id/addSubject_dayCount_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/amguBlue_background"
+                android:layout_marginHorizontal="4dp"/>
+
+            <NumberPicker
+                android:id="@+id/addSubject_dayCount_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/amguBlue_background"
+                android:layout_marginHorizontal="4dp"/>
+
+            <NumberPicker
+                android:id="@+id/addSubject_dayCount_4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/amguBlue_background"
+                android:layout_marginHorizontal="4dp"/>
+
+            <NumberPicker
+                android:id="@+id/addSubject_dayCount_5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/amguBlue_background"
+                android:layout_marginHorizontal="4dp"/>
+
+            <NumberPicker
+                android:id="@+id/addSubject_dayCount_6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/amguBlue_background"
+                android:layout_marginHorizontal="4dp"/>
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="8dp">
+
+        <ImageButton
+            android:id="@+id/addSubject_cancelBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/amguBlue"
+            android:layout_marginHorizontal="8dp"
+            android:src="@drawable/baseline_cancel_presentation_24" />
+
+        <ImageButton
+            android:id="@+id/addSubject_addBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/amguBlue"
+            android:src="@drawable/baseline_check_box_24" />
+    </LinearLayout>
+</LinearLayout>

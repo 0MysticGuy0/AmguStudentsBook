@@ -24,9 +24,11 @@ public class StudentGroupRecyclerAdapter extends RecyclerView.Adapter<StudentGro
 
     private final LayoutInflater inflater;
     private  List<StudentGroup> groups;
-    public StudentGroupRecyclerAdapter(Context context, List<StudentGroup> groups) {
+    private StudentGroupOnClickListener onClickListener;
+    public StudentGroupRecyclerAdapter(Context context, List<StudentGroup> groups, StudentGroupOnClickListener onClickListener) {
         this.groups = groups;
         this.inflater = LayoutInflater.from(context);
+        this.onClickListener = onClickListener;
     }
 
     @NonNull
@@ -46,8 +48,7 @@ public class StudentGroupRecyclerAdapter extends RecyclerView.Adapter<StudentGro
         holder.dateInfo.setText(String.format("%s - %s",df.format(group.getStartDate()),df.format(group.getEndDate())));
 
         holder.root.setOnClickListener(v -> {
-            GroupSettingsFragment.group = group;
-            MainTabActivity.replaceFragment((MainTabActivity)(inflater.getContext()),new GroupSettingsFragment());
+            onClickListener.clicked(group);
         });
     }
 

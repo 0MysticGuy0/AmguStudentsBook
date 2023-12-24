@@ -55,7 +55,10 @@ public class AdminSettingsFragment extends Fragment {
 
             RecyclerView recycler = view.findViewById(R.id.adminSettings_groupsRecycler);
             groupsToDisplay = StudentGroup.getAllStudentGroups();
-            adapter = new StudentGroupRecyclerAdapter(this.getContext(), groupsToDisplay);
+            adapter = new StudentGroupRecyclerAdapter(this.getContext(), groupsToDisplay, group -> {
+                GroupSettingsFragment.group = group;
+                MainTabActivity.replaceFragment(this.getActivity(), new GroupSettingsFragment());
+            });
             recycler.setAdapter(adapter);
 
             EditText searchET = view.findViewById(R.id.adminSettings_search);

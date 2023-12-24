@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BooksTab.AdminBooksFragment"
+    android:orientation="vertical"
+    android:background="@color/amguBlue_background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/amguBlue"
+        android:padding="4dp"
+        android:text="Журналы"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/adminBooks_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/amguBlue_light"
+        android:drawableRight="@drawable/baseline_search_24"
+        android:ems="10"
+        android:hint="поиск"
+        android:inputType="text"
+        android:paddingVertical="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/adminBooks_groupsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_group" />
+</LinearLayout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BooksTab.GroupBooksFragment"
+    android:orientation="vertical"
+    android:background="@color/amguBlue_background">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/amguBlue"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/groupBooks_backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:background="#00FFFFFF"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Журналы группы"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/groupBooks_groupName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#16000000"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="группа"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="170dp" />
+
+    <Button
+        android:id="@+id/groupBooks_daysBookBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@color/amguBlue_light"
+        android:drawableLeft="@drawable/baseline_calendar_month_24"
+        android:drawableTint="@color/white"
+        android:padding="8dp"
+        android:text="Журнал по дням"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/groupSettings_studentsBtn" />
+</LinearLayout>

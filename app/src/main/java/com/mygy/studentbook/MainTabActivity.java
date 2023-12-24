@@ -9,6 +9,9 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mygy.studentbook.BooksTab.AdminBooksFragment;
+import com.mygy.studentbook.BooksTab.GroupBooksFragment;
+import com.mygy.studentbook.Data.Student;
 import com.mygy.studentbook.Data.User;
 import com.mygy.studentbook.SettingsTab.AdminSettingsFragment;
 import com.mygy.studentbook.SettingsTab.GroupSettingsFragment;
@@ -25,14 +28,25 @@ public class MainTabActivity extends AppCompatActivity {
         if(user != null){
             BottomNavigationView bnv=findViewById(R.id.mainTab_bottomNav);
             bnv.setOnItemSelectedListener(item ->{
-                if(item.getItemId()==R.id.settingsNavBtn) {
-                    Fragment fragment = null;
+                Fragment fragment = null;
+                if(item.getItemId() == R.id.settingsNavBtn) {
                     switch (user.getUserType()){
                         case ADMIN: fragment = new AdminSettingsFragment(); break;
-                        case HEADMAN: fragment = new GroupSettingsFragment(); break;
+                        case HEADMAN:
+                            fragment = new GroupSettingsFragment();
+                            GroupSettingsFragment.group = ((Student) user).getStudentGroup();
+                            break;
                     }
-                    replaceFragment(this,fragment);
+                }else if(item.getItemId() == R.id.infoNavBtn){
+                    switch (user.getUserType()){
+                        case ADMIN: fragment = new AdminBooksFragment(); break;
+                        case HEADMAN:
+                            fragment = new GroupBooksFragment();
+                            GroupBooksFragment.group = ((Student) user).getStudentGroup();
+                            break;
+                    }
                 }
+                replaceFragment(this,fragment);
                 return true;
             });
 

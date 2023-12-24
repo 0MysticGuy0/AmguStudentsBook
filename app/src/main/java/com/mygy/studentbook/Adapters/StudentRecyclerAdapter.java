@@ -53,6 +53,8 @@ public class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentRecycler
         holder.number.setText((position+1)+".");
         if(student.getUserType() == User.UserType.HEADMAN)
             holder.headmanStar.setVisibility(View.VISIBLE);
+        else
+            holder.headmanStar.setVisibility(View.GONE);
 
         holder.root.setOnClickListener(v -> {
             StudentSettingsFragment.student = student;

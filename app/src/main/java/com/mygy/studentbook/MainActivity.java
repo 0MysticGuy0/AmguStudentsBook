@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.mygy.studentbook.Data.Student;
+import com.mygy.studentbook.Data.StudentGroup;
 import com.mygy.studentbook.Data.User;
 import com.mygy.studentbook.Data.UserCreator;
 import com.mygy.studentbook.Data.Utilites.DataBaseHelper;
@@ -39,6 +41,29 @@ public class MainActivity extends AppCompatActivity {
                 DataBaseHelper.getAllUsersFromBase(successU -> {//когда родгрузил группы, подгружаю всех рользователей
                     if(successU) {
                         System.out.println("=================\nЗагрузил " + User.getAllUsers().size() + " пользователей\n===========");
+
+                        DataBaseHelper.getAllSubjectsFromBase(successS -> {
+                            if(successS){
+                                int sum = 0;
+                                for(StudentGroup gr:StudentGroup.getAllStudentGroups()){
+                                    sum += gr.getSubjects().size();
+                                }
+                                System.out.println("=================\nЗагрузил " + sum + " предметов\n===========");
+                                DataBaseHelper.getAllNotesFromBase(successN -> {
+                                    if(successN){
+                                        int sumN = 0;
+                                        for(Student student:Student.getAllStudents()){
+                                            sumN += student.getNotes().size();
+                                        }
+                                        System.out.println("=================\nЗагрузил " + sumN + " записей\n===========");
+                                    }else{
+                                        throw new RuntimeException();
+                                    }
+                                });
+                            }else{
+                                throw new RuntimeException();
+                            }
+                        });
 
                         loginBtn.setVisibility(View.VISIBLE);
                         loginBtn.setOnClickListener(v -> {

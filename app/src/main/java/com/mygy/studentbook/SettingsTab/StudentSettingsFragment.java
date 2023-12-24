@@ -1,8 +1,10 @@
 package com.mygy.studentbook.SettingsTab;
 
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,6 +21,7 @@ import android.widget.Toast;
 
 import com.mygy.studentbook.Data.Student;
 import com.mygy.studentbook.Data.User;
+import com.mygy.studentbook.Data.UserCreator;
 import com.mygy.studentbook.MainTabActivity;
 import com.mygy.studentbook.R;
 
@@ -34,7 +37,7 @@ public class StudentSettingsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_student_settings, container, false);
 
         ImageButton backBtn = view.findViewById(R.id.studentSettings_backBtn);
-        backBtn.setOnClickListener(v -> MainTabActivity.replaceFragment(getActivity(),new StudentsSettingsFragment()) );
+        backBtn.setOnClickListener(v -> closeTab() );
 
         if(student != null){
 
@@ -64,6 +67,11 @@ public class StudentSettingsFragment extends Fragment {
                 student.makeHeadman();
                 headmanStarIV.setVisibility(View.VISIBLE);
                 makeHeadmanBtn.setVisibility(View.GONE);
+            });
+
+            Button deleteBtn = view.findViewById(R.id.studentSettings_deleteBtn);
+            deleteBtn.setOnClickListener(v -> {
+                showAcceptStudentDeletingWindow();
             });
 
             ImageButton copyLoginDataBtn = view.findViewById(R.id.studentSettings_copyBtn);
@@ -101,6 +109,35 @@ public class StudentSettingsFragment extends Fragment {
         return student==null? null :
                 String.format("Данные для входа в дневник посещений АмГУ для \"%s\":\nid: %s\nпароль: %s"
                         ,student.getFio(),student.getId(),student.getPassword());
+    }
+
+    private void showAcceptStudentDeletingWindow(){
+        AlertDialog.Builder a_builder = new AlertDialog.Builder(getContext());
+        a_builder.setMessage("Удалить студента \""+student.getFio()+"\" из группы "+student.getStudentGroup().getName()+"?")
+                .setCancelable(false)
+                .setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        UserCreator.deleteStudent(student);
+
+                        dialog.cancel();
+                        closeTab();
+                    }
+                })
+                .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = a_builder.create();
+        alert.setTitle("Удаление студента");
+        alert.show();
+    }
+
+    private void closeTab(){
+        MainTabActivity.replaceFragment(getActivity(),new StudentsSettingsFragment());
     }
 
 }
